@@ -1,0 +1,602 @@
+\documentclass{article}
+
+%PACKAGES
+%----------------------------
+\input{packages}
+
+%CONFIGS
+%----------------------------
+\input{configs}
+
+\DeclareMathOperator*{\DoubleVert}{\Vert}
+
+\addbibresource{example.bib}
+\addbibresource{quellen.bib}
+
+\title{Super toller Titel}
+\author{Your name here}
+
+%DOCUMENT
+%----------------------------
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+{
+\section*{Erster Schritt}
+Dieses Dokument.
+}
+
+{
+\section*{Sonderzeichen}
+\begin{enumerate}
+\item Linux ist das \# 1 Betriebssystem!
+\item \textasciitilde
+\item \textbackslash\_()\_\textbackslash/
+\item \texttt{int x(int x)\{ return x; \}}
+\item Ein Fisch kostet 5.00~\$ % ~ generates non linebreaking whitespace
+\item Die Regenwahrscheinlichkeit beträgt 20\,\% in diesem Landkreis.
+\item \glqq{}Anführungszeichen{}\grqq % {} Ends commands but no space
+\end{enumerate}
+}
+
+{
+\section*{Schriften}
+
+%\textit{\bfseries Kursiver} \textbf{\itshape Fettdruck}
+
+Als \textsc{Gregor Samsa} eines \textit{Morgens} aus unruhigen {\Large\textbf{Träumen}} erwachte, fand er
+sich in seinem Bett Träumen erwachte, fand er sich in seinem {\small Bett} zu einem ungeheueren {\large\texttt{Ungeziefer}} verwandelt. Er lag auf seinem {\textsf{panzerartig harten}} {\bfseries Rücken} und sah, wenn er den {\itshape{}Kopf} ein wenig hob, seinen gewölbten, braunen, von bogenförmigen {\small Versteifungen} geteilten Bauch, auf dessen {\large\itshape Höhe} sich die {\bfseries Bettdecke}, zum gänzlichen \textsc{Niedergleiten} bereit, kaum noch erhalten konnte. \textsc{Seine} vielen, im {Vergleich} zu seinem sonstigen {\large Umfang} kläglich dünnen, {\large\itshape Beine} flimmerten ihm hilflos vor den Augen.
+
+}
+
+{
+\section*{Umbrüche}
+
+Als Gregor Samsa eines Morgens aus unruhigen Träumen erwachte, fand er sich in
+seinem Bett zu einem ungeheueren Ungeziefer verwandelt.\\
+Er lag auf seinem panzerartig harten Rücken und sah, wenn er den Kopf ein wenig
+hob, seinen gewölbten, braunen, von bogenförmigen Versteifungen geteilten Bauch,
+auf dessen Höhe sich die Bettdecke, zum gänzlichen Niedergleiten bereit, kaum noch
+erhalten konnte.\\[1cm]
+Seine vielen, im Vergleich zu seinem sonstigen Umfang kläglich dünnen Beine flimmerten ihm hilflos vor den Augen.
+\glqq{}Was ist mit mir geschehen?\grqq{} dachte er.\newline
+Es war kein Traum. Sein Zimmer, ein richtiges, nur etwas zu kleines Menschenzimmer,
+lag ruhig zwischen den vier wohlbekannten Wänden.\par
+Über dem Tisch, auf dem eine auseinandergepackte Musterkollektion von Tuchwaren
+ausgebreitet war -- Samsa war Reisender --, hing das Bild, das er vor kurzem aus einer
+illustrierten Zeitschrift ausgeschnitten und in einem hübschen, vergoldeten Rahmen
+untergebracht hatte.
+\newpage
+Es stellte eine Dame dar, die, mit einem Pelzhut und einer Pelzboa
+versehen, aufrecht dasaß und einen schweren Pelzmuff, in dem ihr ganzer Unterarm
+verschwunden war, dem Beschauer entgegenhob.
+
+}
+
+{
+\section*{Listen und Aufzählungen}
+
+\subsection*{Einfache Listen}
+
+\begin{itemize}
+  \item Eins
+  \item Zwei
+  \item Drei
+\end{itemize}
+
+\begin{itemize}
+\item Eins
+  \begin{itemize}
+    \item Eineinhalb
+    \begin{itemize}
+      \item Eineinviertel
+      \item Eins und zwei Viertel?
+    \end{itemize}
+    \item Eins und zwei Halbe?
+  \end{itemize}
+\item Zwei
+  \begin{itemize}
+    \item Zweieinhalb
+    \begin{itemize}
+      \item Zweieinviertel
+      \item Zwei und zwei Viertel?
+    \end{itemize}
+    \item Zwei und zwei halbe?
+  \end{itemize}
+\item Drei
+  \begin{itemize}
+    \item Dreienhalb
+    \begin{itemize}
+      \item Dreieinviertel
+      \item Drei und zwei Viertel?
+    \end{itemize}
+    \item[]
+    \item Drei und zwei Halbe?
+  \end{itemize}
+\end{itemize}
+
+\subsection*{Aufzählungen und Anderes}
+
+\begin{multicols}{2}
+\begin{enumerate}
+\item Kommt es anders und
+\item als man denkt
+\end{enumerate}
+\begin{description}
+  \item[Bananen] sind sehr kaliumreich
+  \item[Schokolade] enthält viele Vitamine
+  \item[Tomaten] sind Früchte
+\end{description}
+\end{multicols}
+
+\subsection*{Kombinationen von Listen und Aufzählungen}
+
+\begin{itemize}
+  \item Adventssonntage 2025:
+  \begin{enumerate}
+    \item Advent: 30.11.25
+    \item Advent: 7.12
+    \item Advent: 14.12
+    \item Advent: 21.12
+  \end{enumerate}
+  \item Adventssonntage 2025:
+  \begin{enumerate}
+    \item Advent: 29.11
+    \item Advent: 6.12
+    \item Advent: 13.12
+    \item Advent: 20.12
+  \end{enumerate}
+\end{itemize}
+
+}
+
+{
+\section*{Unformatierte Ausgabe}
+
+\begin{verbatim*}
+\verb!\begin{verbatim*}!\textit{Quelltext}\verb!schwierig,oder?\end{verbatim}! a b c
+\end{verbatim*}
+
+}
+
+{
+\section{Umlaute, Anführungszeichen und Symbole}\label{sec:sonder}
+
+\subsection*{Umlaute und diakritische Zeichen}
+
+Diakritische Zeichen oder Diakritika sind an Buchstaben angebrachte kleine Zeichen wie Punkte, Striche, Häkchen, Bögen oder Kreise. Diese zeigen an, dass der Buchstabe in Aussprache oder Betonung, abweicht von einem Buchstaben ohne diese Zeichen. {\small Quelle: \url{https://de.wikipedia.org/wiki/Diakritisches_Zeichen}}
+
+
+\begin{multicols}{2}
+\begin{itemize}
+  \item Antoine de Saint-Exup\'{e}ry
+  \item Gauß \& G\"{o}del
+  \item Paul Erd\H{o}s
+  \item Jo Nesb\o
+  \item Finn Aln\ae{}s
+  \item Tor \AA{}ge Bringsv\ae{}rd
+  \item Beno\^{i}t de Sainte-Maure
+  \columnbreak
+  \item Fran\c{c}ois Rabelais
+  \item Chlo\"{e} Moretz
+  \item Libu\v{s}e \v{S}afr\'{a}nkov\'{a}
+  \item \'{O}l\'{i}na \TH{}orvar\dh{}ard\'{o}ttir
+  \item K\v{r}i\v{s}\v{t}an of Prachatice
+  \item \L\'{o}d\'{z} \& E\l{}k (\'{E}w\={u}k\`{e})
+  \item \c{S}\i{}rnak \& I\u{g}d\i{}r
+\end{itemize}
+\end{multicols}
+
+
+\subsection*{Anführungszeichen}
+
+\begin{itemize}
+  \item \enquote{deutsche Anführungszeichen}
+  \item \enquote*{einfache Anführungszeichen}
+  \item \enquote{verschachtelte \enquote{Anführungszeichen}}
+  \setquotestyle[guillemets]{german}
+  \item \enquote{deutsche Anwendung der Guillemets}
+  \setquotestyle[quotes]{german}
+\end{itemize}
+
+\subsection*{Individualisierte Listen mit Symbolen}
+
+\begin{itemize}
+\item[\faIcon{android}] Android
+\item[\faIcon{apple}] AppleIiOS
+\item[\faIcon{windows}] Windows
+\item[\faIcon{linux}] Linux
+\item[{\faCheckSquare[regular]}]
+\end{itemize}
+
+
+}
+
+{
+\section*{Farben}
+
+{\color{red}Rot}, \textcolor{orange}{Orange} und \textcolor{yellow}{Gelb} und \textcolor{green}{Grün} sind im Regenbogen drin,\\
+Mit \textcolor{blue}{Blau} und \textcolor{Indigo}{Indigo} geht's weiter auf der \textcolor{red}{Re}\textcolor{orange}{gen}\textcolor{yellow}{bo}\textcolor{green}{gen}\textcolor{Cyan}{lei}\textcolor{blue}{ter},\\
+und zum Schluss das \textcolor{violet}{Violett} -- sieben Farben sind komplett.
+}
+
+{
+\centering
+\colorbox{black}{\textcolor{xkcdWatermelon}{Feuerblick}}\quad
+\colorbox{xkcdBluePurple}{\textcolor{xkcdMurkyGreen}{Mooshauch}}\quad
+\colorbox{xkcdCyan}{\textcolor{yellow}{Neonflare}}\par
+}
+
+{
+Ich mache mir \textcolor{xkcdMacaroniAndCheese}{Makkaroni mit Käse}, dazu gibt es Salat mit \textcolor{xkcdOlive}{grünen Oliven}, \textcolor{xkcdMushroom}{Pilzen} und
+\colorbox{black}{\textcolor{xkcdButterYellow}{Butter}}. Als Nachspeise folgen dann
+\colorbox{black}{\textcolor{xkcdKiwi}{Kiwi}\textcolor{xkcdButterYellow}{-Pudding}}, \textcolor{xkcdBloodOrange}{Blutorange} und \textcolor{xkcdGrapefruit}{Grapefruit} sowie
+ein Schuss \textcolor{xkcdButterscotch}{Butterscotch-Sirup} im
+\colorbox{black}{\textcolor{xkcdTeaGreen}{grünen Tee}}.
+}
+
+{
+\section*{Links und URLs}
+
+\subsection*{Dokumenteninterne verlinkungen}
+
+\begin{itemize}
+  \item Die Verwendung von Sonderzeichen haben wir in \cref{sec:sonder} geübt.
+\end{itemize}
+
+\begin{itemize}
+  \item Den goldenen Apfel werden Sie in \crefrange{fig:apple1a}{fig:apple2} sehen.
+\end{itemize}
+
+\subsection*{URLs}
+
+\begin{itemize}
+\item \url{https://ctan.org/}
+\item \href{https://ctan.org/}{Hier klicken!}
+\item \href{https://ctan.org/}{\faLink}
+\end{itemize}
+
+}
+
+{\section*{Bibliographie und Zitieren}
+
+Hier ist ein Zitat: \cite{kafkaVerwandlung}.
+
+}
+
+{
+\section*{Bilder und Grafiken}
+
+\subsection*{Bilder}
+
+\begin{figure}[H]
+\begin{subfigure}{0.33\textwidth}%
+  \centering
+  \includegraphics[width=2cm]{example-image}
+  \caption{Linkes Bild}\label{fig:apple1a}
+\end{subfigure}%\hfill
+\begin{subfigure}{0.33\textwidth}%
+  \centering
+\includegraphics[width=4cm]{example-image}
+\caption{Mittleres Bild}\label{fig:apple1b}
+\end{subfigure}%\hfill
+\begin{subfigure}{0.33\textwidth}%
+  \centering
+  \includegraphics[width=0.9\linewidth]{example-image}
+  \caption{Rechtes Bild}\label{fig:apple1c}
+\end{subfigure}
+\caption{Noch ein unterteiltes Bild}
+\end{figure}
+
+
+\subsection*{Bilder neben Bildern oder Text}
+
+%Figure ist Float-Umgebung und funktioniert nicht innerhalb Minipage
+\begin{minipage}[t]{0.4\textwidth}
+  \vspace{0pt} %Top-Baseline
+  \centering
+  \includegraphics[width=\linewidth]{example-image}
+  \captionof{figure}{Derselbe goldene Apfel}\label{fig:apple2} %Caption without a float
+\end{minipage}\hfill
+\begin{minipage}[t]{0.55\textwidth}
+  \blindtext\par
+\end{minipage}
+
+\subsection*{Vektorgrafiken}
+
+%\includesvg[width=1.0\textwidth]{}
+
+}
+
+{
+\section*{Tabellen}
+
+Hello
+
+\captionof{table}{Simple table}
+\label{tab:simple}
+\begin{tabular}{|c|c|c|}
+\hline
+\bfseries 1 & \bfseries 2 & \bfseries 3 \\
+\hline
+4 & 5 & 6 \\
+\hline
+7 & 8 & 9 \\ \hline
+\end{tabular}
+
+
+\subsection*{Einfache Tabellen}
+
+\begin{multicols}{2}
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+\bfseries 1 & \bfseries 2 & \bfseries 3 \\
+\hline
+4 & 5 & 6 \\
+\hline
+7 & 8 & 9 \\\hline
+\end{tabular}
+
+\columnbreak
+
+\centering
+\begin{tabular}{ccc}
+%\toprule
+\bfseries 1 & \bfseries 2 & \bfseries 3 \\
+\midrule
+4 & 5 & 6 \\\midrule
+7 & 8 & 9 \\%\bottomrule
+\end{tabular}
+
+\end{multicols}
+
+\subsection*{Tabellen über mehrere Spalten und/oder Zeilen}
+
+\begin{multicols}{2}
+\centering
+\vfill
+\begin{tabular}{|c|c|c|}
+\hline
+Erste & Zeile & normal\\\hline
+\multicolumn{2}{|c|}{Zweite Zeile} & anders\\\hline
+Dritte & Zeile & normal\\\hline
+\end{tabular}
+\vfill
+\columnbreak
+\centering
+\vfill
+\begin{tabular}{|c|c|c|}
+\hline
+Teacher & Title & Year\\\hline
+\multirow{3}{*}{Dave Miller} & First steps in \LaTeX & 2004\\%\cline{2-3}
+& \LaTeX course & 2005\\%\cline{2-3}
+& \LaTeX seminar& 2009\\\hline
+\end{tabular}
+\vfill
+\end{multicols}
+
+\begin{comment}
+\begin{multicols}{2}
+\begin{minipage}[c][\textheight]{\linewidth}
+Centered content
+\end{minipage}
+\columnbreak
+\begin{minipage}[c][\textheight]{\linewidth}
+Centered content
+\end{minipage}
+\end{multicols}
+\end{comment}
+
+\begin{table}[H]
+\centering
+\caption{Overview of results}
+\label{tab:overview}
+\begin{subtable}[t]{0.5\linewidth}%
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+Erste & Zeile & normal\\\hline
+\multicolumn{2}{|c|}{Zweite Zeile} & anders\\\hline
+Dritte & Zeile & normal\\\hline
+\end{tabular}
+\caption{Tabelle mit \texttt{multicolumn}}\label{tab:multicol}
+\end{subtable}%
+\begin{subtable}[t]{0.5\linewidth}%
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+Teacher & Title & Year\\\hline
+\multirow{3}{*}{Dave Miller} & First steps in \LaTeX & 2004\\%\cline{2-3}
+& \LaTeX course & 2005\\%\cline{2-3}
+& \LaTeX seminar& 2009\\\hline
+\end{tabular}
+\caption{Tabelle mit \texttt{multirow}}\label{tab:multirow}
+\end{subtable}
+\end{table}
+
+
+\subsection*{Tabellen über mehrere Spalten und Zeilen}
+
+\hrulefill
+\begin{multicols}{2}
+\begin{minipage}[c][0.3\textheight][c]{\linewidth}
+\centering
+\begin{tabular}{cccc}\toprule
+BBB & CCC & DDD & AAA\\\midrule
+\multicolumn{3}{c}{\multirow{2}{*}{Multicolumn \& multirow}} & AAA\\\cmidrule{4-4}
+&&& AAA\\\midrule
+BBB & CCC & DDD & AAA\\\bottomrule
+\end{tabular}
+\end{minipage}
+
+\columnbreak
+
+\begin{minipage}[c][0.3\textheight][c]{\linewidth}
+\centering
+\begin{tabular}{@{}>{$}c<{$}>{\itshape}l@{}}\toprule
+\textbf{Symbol} & \textbf{Beschreibung}\\\midrule
+0 & Null \\\cmidrule{1-1}
+1 & Eins \\\cmidrule{2-2}
+\mathrm e & Eulersche Zahl \\\midrule
+\pi & Kreiszahl \\\midrule
+\tau & Doppelte Kreiszahl \\\midrule
+\emptyset & Leere Menge \\
+\mathbb{Z} & Menge der ganzen Zahlen \\
+\mathbf{a} & Vektor \\
+\mathbf{A} & Matrix~\vline~Tensor \\\bottomrule
+\end{tabular}
+\vfill
+\end{minipage}
+
+\end{multicols}
+\hrule
+
+}
+
+
+
+{
+\section*{Formeln \& Ausdrücke}
+
+
+
+\subsection*{Mathematischer Formelsatz}
+
+
+\begin{align}
+a^2 + b^2 &= c^2 \label{eq:pythagoras}\\
+x - \lfloor x \rceil &= 0 \iff x \in \mathbb Z\\
+1 &= \mathrm e^{2\pi\mathrm{i}}\\
+1729 &= 1^3+12^3=9^3+10^3\\
+x_{1,2} &= \frac{-b\pm\sqrt{b^2-4ac}}{2a}\\
+\frac 1 \pi &= \frac{2\sqrt 2}{9801} \sum_{k=0}^{\infty} \frac{(4k)!(1103+26390k)}{(k!)^4396^{4k}}\\[1ex]
+\vec{h}_i^{(k)} &= \color{purple}
+\DoubleVert_{k=1}^{K}
+\color{teal}\sigma\left(\color{blue}\sum_{j \in N_i}\color{orange}\alpha_{i,j}^{(k)}W^k\vec{h}_j\color{teal}\right)
+\end{align}
+
+
+
+\subsection*{Chemische Gleichungen}
+
+\[
+\begin{aligned}
+\sideset{^{235}}{}{\operatorname{U}} + n
+\to
+\sideset{^{236}}{^*}{\operatorname{U}}
+\to
+\sideset{^{95}}{}{\operatorname{Sr}} + \sideset{^{139}}{}{\operatorname{Xe}} + 2n + 180\,\mathrm{{MeV}}\\[1ex]
+\sideset{^{2}_1}{}{\operatorname{H}} +
+\sideset{^{3}_1}{}{\operatorname{H}}
+\to
+\sideset{^{4}_2}{}{\operatorname{He}} +
+n +
+17.6\,\mathrm{MeV}
+\end{aligned}
+\]
+
+}
+
+{
+\section*{Quellcode}
+
+\subsection*{Python mit listings}
+
+\begin{lstlisting}[language=Python, keywordstyle=\color{blue}, caption=Code,label={src:py}]
+import numpy as np
+
+def incmatrix(genl1,genl2):
+    m = len(genl1)
+    n = len(genl2)
+    M = None #to become the incidence matrix
+    VT = np.zeros((n*m,1), int)  #dummy variable
+
+    #compute the bitwise xor matrix
+    M1 = bitxormatrix(genl1)
+    M2 = np.triu(bitxormatrix(genl2),1)
+
+    for i in range(m-1):
+        for j in range(i+1, m):
+            [r,c] = np.where(M2 == M1[i,j])
+            for k in range(len(r)):
+                VT[(i)*n + r[k]] = 1;
+                VT[(i)*n + c[k]] = 1;
+                VT[(j)*n + r[k]] = 1;
+                VT[(j)*n + c[k]] = 1;
+
+                if M is None:
+                    M = np.copy(VT)
+                else:
+                    M = np.concatenate((M, VT), 1)
+
+                VT = np.zeros((n*m,1), int)
+
+    return M
+\end{lstlisting}
+
+In Listing~\ref{src:py} ist ein Python-Codebeispiel dargestellt.
+
+
+
+\subsection*{C/C++ mit minted}
+
+Ein bisschen C-Code.
+
+\begin{listing}[H]
+\begin{minted}[autogobble]{c}
+    #include <stdio.h>
+
+    int main() {
+        printf("Hello, World!\n");
+        return 0;
+    }
+\end{minted}
+\caption{Hello World in C++}
+\label{lst:c_hello}
+\end{listing}
+
+\begin{comment}
+\begin{minted}{c}
+#include <stdio.h>
+
+int main(void) {
+    printf("Hello, World!\n");
+    return 0;
+}
+\end{minted}
+\captionof{listing}{Hello World in C}
+\label{lst:c_hello}
+\end{comment}
+
+
+\subsection*{Java mit minted aus einer Datei}
+
+\begin{listing}[H]
+\inputminted{java}{beispiel.java}
+\caption{Java Code aus Datei}
+\label{lst:java}
+\end{listing}
+
+\Cref{lst:java} zeigt Java-Code, der aus einer externen Datei eingebunden wurde.
+
+}
+
+{
+\newpage
+\printbibliography
+
+\begin{refsection}
+\nocite{*}
+\printbibliography[title={Alles}]
+
+\printbibliography[type=article, title={Artikel}]
+
+\printbibliography[nottype=online, title={Keine Onlinequellen}]
+\end{refsection}
+}
+
+
+\end{document}

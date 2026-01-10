@@ -1,0 +1,251 @@
+\documentclass{article}
+
+%PACKAGES
+%----------------------------
+\input{packages}
+
+%CONFIGS
+%----------------------------
+\input{configs}
+
+\addbibresource{example.bib}
+\addbibresource{quellen.bib}
+
+\title{Super toller Titel}
+\author{Your name here}
+
+%DOCUMENT
+%----------------------------
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+Heute ist der \today.
+
+{
+
+\begin{enumerate}[(a)]
+\item Erster Punkt in erster Ebene
+\item Zweiter Punkt
+\begin{enumerate}
+\item Erster Punkt in zweiter Ebene
+\begin{enumerate}
+\item Erster Punkt in dritter Ebene
+\item Wieder normal
+\end{enumerate}
+\end{enumerate}
+\item[\faCog] Geändertes Aufzählungszeichen
+\item Zweiter Punkt in zweiter Ebene
+\item[\faCrown] Dritter Punkt in erster Ebene
+\end{enumerate}
+
+\marginpar{Randnotiz}
+
+Hallo~\footnote{Hello Footnote}
+
+\enquote{deutsche \enquote{Anführungszeichen}}
+
+\begin{itemize}
+\item \faIcon{windows}
+\item \faIcon{linux}
+\item[\faIcon{android}]
+\item[{\faCheckSquare[regular]}]
+\end{itemize}
+
+{\bfseries Fettgedruckt und \textmd{wieder normal}, in einer {\mdseries neuen
+\TeX-Gruppe kann dann \textbf{wiederum hin- und} hergeschaltet} werden.}\\
+Also\bfseries{} eigentlich\mdseries{} alles \textbf{ganz} \textmd{einfach}, oder?
+
+Small caps (Kapitälchen): \textsc{Hello World}
+
+}
+
+\begin{itemize}
+\item \href{https://github.com}{\faGithub\ GitHub}
+\item \url{https://ctan.org/}
+\end{itemize}
+
+
+{%3. Farben, Referenzierungen und Quellen
+
+\textcolor{red}{Rot}
+\textcolor{blue}{Blau}
+
+\textcolor{blue}{\textcolor{cyan}{\textcolor{green}{\textcolor{yellow}{\textcolor{orange}{\textcolor{red}{Re}gen}bo}gen}lei}ter} %rot,orange,gelb,grün,hellblau,blau
+
+{
+\color{red}
+\colorlet{mycolor}{.}
+
+\textcolor{mycolor}{Meine Farbe}
+}
+
+\section{Eine erste Überschrift}\label{ch:first}
+Wir befinden uns in Kapitel~\ref{ch:first}, welches
+auf Seite~\pageref{ch:first} abgedruckt ist.
+
+\section{Mysection}\label{s:mys}
+
+In \cref{s:mys} auf \cpageref{s:mys} haben wir Farben geübt.
+
+\section{\texorpdfstring{$E=mc^2$}{E = mc2}}
+\label{s:einstein}
+
+\section{Hallo}
+\label{s:hello}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=.5\linewidth]{example-image}
+  \caption{An example picture}
+  \label{fig:example}
+\end{figure}
+
+
+
+Ein Link zum Beispielbild~\cref{fig:example}. Mehrere Referenzen:~\cref{s:mys,s:hello} oder \crefrange{s:mys}{s:hello}
+
+\section*{Zitieren und Quellenangabe}
+\pdfbookmark[1]{Zitieren und Quellenangabe}{sec:quellen}
+
+Hier will ich zitieren~\cite[vgl.][ff.]{Vaswani2017}.
+Hier will ich zitieren~\parencite[][]{Vaswani2017}.
+Hier will ich zitieren~\autocite[][]{Vaswani2017}.
+
+Jahr und Autorennamen: \citeyear{Vaswani2017} and \citeauthor{Vaswani2017}.
+
+Im Text \autocite{morrisPasswordSecurityCase1979} wird die Passwortsicherheit besprochen.
+
+\citeauthor{kafkaVerwandlung} schrieb \citetitle{kafkaVerwandlung}.
+
+
+}
+
+
+{% 4. Abbildungen, Tabellen und Quellcode
+
+\section*{Abbildungen}
+
+\begin{figure}[H]
+\centering
+\includegraphics[origin=c,angle=45,width=.5\linewidth]{example-image}
+  \caption{A new example picture}
+  \label{fig:new_example}
+\end{figure}
+
+In~\Cref{fig:new_example} sieht man ein Beispielbild.
+
+%Skalierter Text: \scalebox{2}[3]{Hello}\\
+%Resize: \resizebox{!}{2cm}{Mein Text}
+
+Tabelle mit Table-Umgebung (Float):
+
+\begin{table}[H]
+\centering
+\caption{Example table}
+\label{tab:ex}
+\begin{tabular}{cc}
+A & B \\
+1 & 2
+\end{tabular}
+\end{table}
+
+Tabellen mit Booktabs:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{ccc}\toprule
+A & B & C\\\midrule
+1 & 2 & 3\\\bottomrule
+\end{tabular}
+\caption{Booktabs Tabelle}
+\label{tab:booktabs}
+\end{table}
+
+Noch schöner mit Nicetable:
+
+\begin{NiceTabular}{ccc}
+A & B & C \\
+1 & 2 & 3 \\
+4 & 5 & 6
+\end{NiceTabular}
+
+Mit tabularx auch Tabellen mit Stretch-Breite:
+
+\begin{tabularx}{\linewidth}{lXr}
+Left & This column automatically stretches to fill the line width & Right \\
+\end{tabularx}
+
+\begin{tabularx}{\linewidth}{lXr}
+\toprule
+Item & Description & Value \\
+\midrule
+A & Automatically wrapped description text & 12 \\
+B & Short text & 7 \\
+\bottomrule
+\end{tabularx}
+
+Framed:\\
+
+\begin{mdframed}[
+  linewidth=1pt,
+  linecolor=blue,
+  backgroundcolor=blue!5,
+  roundcorner=5pt
+]
+Text
+\end{mdframed}
+
+Relsize:
+
+Normal \relsize{1}Bigger \relsize{-1}Back to normal
+
+Quellcode:
+
+\begin{lstlisting}[escapeinside={<<}{>>}]
+int n = 10; <<\textbf{important}>>
+double x = <<$\sqrt{2}$>>;
+\end{lstlisting}
+}
+
+\textbf{Mathematikmodus}
+
+Limits:
+$\sum\limits_{i=1}^n a_i$
+
+$\sum_{i=1}^n a_i$
+
+\[
+\vec{a} = \begin{pmatrix}1\\2\end{pmatrix}
+\]
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+\[
+\vec{a} = \begin{pmatrix}1\\2\end{pmatrix}
+\]
+
+\begin{align*}
+\operatorname{LReLU}_\alpha(x) &= \max\{\alpha x, x\} \\
+\theta &= \operatorname*{argmin}_\theta \mathcal{L}_\theta(x)\\
+\theta &= \operatorname{argmin}_\theta \mathcal{L}_\theta(x)\\
+\end{align*}
+
+{
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{cc}
+A & B \\
+C & D
+\end{tabular}
+}
+
+
+
+
+\newpage
+
+\printbibliography[title=Funny]
+
+
+\end{document}

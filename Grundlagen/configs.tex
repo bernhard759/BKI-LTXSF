@@ -1,0 +1,71 @@
+{
+\setlist{nosep}
+%\setlist{itemsep=0ex, topsep=0em} %Globale Listeneinstellungen
+\setlist{
+  itemsep=0pt,
+  topsep=0pt,
+  parsep=0pt,
+  partopsep=0pt
+}
+}
+
+{
+\setstretch{1} %Zeilenabstand
+}
+
+{
+\bookmarksetup{depth=2} %Bookmarks depth
+}
+
+{
+\hypersetup{
+colorlinks=true,
+urlcolor=CornflowerBlue, % \url and \href
+linkcolor=Magenta, % internal links
+citecolor=orange,
+filecolor=purple
+}
+}
+
+{
+%\titlecontents{section} %Custom ToC
+%[1.5em]
+%{\bfseries}
+%{\contentslabel{2em}}
+%{}
+%{\hfill\contentspage}
+}
+
+{
+\titleformat{\section}
+{\sffamily\bfseries}
+{\thesection}{1em}{}
+
+\titleformat{\subsection}
+{\sffamily\bfseries}
+{\thesubsection}{1em}{}
+
+\titleformat{\subsubsection}
+{\sffamily\bfseries}
+{\thesubsubsection}{1em}{}
+}
+
+{
+\captionsetup{
+  font=small,
+  labelfont=bf,
+  labelsep=colon
+}
+\captionsetup[table]{hypcap=false}
+\captionsetup[listing]{hypcap=false}
+\captionsetup[figure]{hypcap=false}
+}
+
+{
+\usemintedstyle{friendly}
+\setminted{
+  fontsize=\large,
+  linenos=false,
+  breaklines=true
+}
+}
