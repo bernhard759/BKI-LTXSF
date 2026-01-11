@@ -21,9 +21,9 @@
 \maketitle
 \tableofcontents
 
-Heute ist der \today.
-
+\section*{Formatierung \& Umgebung}
 {
+Heute ist der \today.
 
 \begin{enumerate}[(a)]
 \item Erster Punkt in erster Ebene
@@ -59,16 +59,14 @@ Also\bfseries{} eigentlich\mdseries{} alles \textbf{ganz} \textmd{einfach}, oder
 
 Small caps (Kapitälchen): \textsc{Hello World}
 
-}
-
 \begin{itemize}
 \item \href{https://github.com}{\faGithub\ GitHub}
 \item \url{https://ctan.org/}
 \end{itemize}
+}
 
-
-{%3. Farben, Referenzierungen und Quellen
-
+\section*{Formatierung \& Umgebung}
+{
 \textcolor{red}{Rot}
 \textcolor{blue}{Blau}
 
@@ -102,8 +100,6 @@ In \cref{s:mys} auf \cpageref{s:mys} haben wir Farben geübt.
   \label{fig:example}
 \end{figure}
 
-
-
 Ein Link zum Beispielbild~\cref{fig:example}. Mehrere Referenzen:~\cref{s:mys,s:hello} oder \crefrange{s:mys}{s:hello}
 
 \section*{Zitieren und Quellenangabe}
@@ -123,9 +119,10 @@ Im Text \autocite{morrisPasswordSecurityCase1979} wird die Passwortsicherheit be
 }
 
 
-{% 4. Abbildungen, Tabellen und Quellcode
+\section*{Abbildungen, Tabellen, Quellcode, Formeln}
+{
 
-\section*{Abbildungen}
+\subsection*{Abbildungen}
 
 \begin{figure}[H]
 \centering
@@ -138,6 +135,9 @@ In~\Cref{fig:new_example} sieht man ein Beispielbild.
 
 %Skalierter Text: \scalebox{2}[3]{Hello}\\
 %Resize: \resizebox{!}{2cm}{Mein Text}
+
+
+\subsection*{Tabellen}
 
 Tabelle mit Table-Umgebung (Float):
 
@@ -201,7 +201,7 @@ Relsize:
 
 Normal \relsize{1}Bigger \relsize{-1}Back to normal
 
-Quellcode:
+\subsection*{Quellcode}
 
 \begin{lstlisting}[escapeinside={<<}{>>}]
 int n = 10; <<\textbf{important}>>
@@ -209,7 +209,7 @@ double x = <<$\sqrt{2}$>>;
 \end{lstlisting}
 }
 
-\textbf{Mathematikmodus}
+\subsection*{Mathematikmodus}
 
 Limits:
 $\sum\limits_{i=1}^n a_i$
@@ -232,6 +232,10 @@ $\sum_{i=1}^n a_i$
 \theta &= \operatorname{argmin}_\theta \mathcal{L}_\theta(x)\\
 \end{align*}
 
+\section*{Befehle, Längen, Zähler, Layout, Metadaten}
+{
+\subsection*{Befehle}
+
 {
 \renewcommand{\arraystretch}{1.3}
 \begin{tabular}{cc}
@@ -240,7 +244,166 @@ C & D
 \end{tabular}
 }
 
+\newcommand{\spruch}[1]{\textit{\enquote*{#1}}}
+\spruch{Hallo, Welt!}
 
+\newenvironment{myquote}[2][teal]{%
+\textbf{\textsc{#2}:}\par
+\begin{quote}\color{#1}%
+}{\end{quote}}
+
+\begin{myquote}[purple]{Albert Einstein}
+Das Leben ist wie Fahrrad fahren. Um die Balance zu halten, musst du in Bewegung bleiben.
+\end{myquote}
+
+\subsection*{Längen}
+
+\newlength{\mylen}
+\setlength{\mylen}{2cm}
+
+This rule is 2cm long:
+\rule{\mylen}{0.4pt}
+
+\subsection*{Zähler (Teil 1)}
+
+Section \arabic{section}.\arabic{subsection}
+
+Page \arabic{page}\\
+Page \thepage\\
+Last Page \pageref{LastPage}
+
+\begin{enumerate}
+\item First
+\item Second (number = \arabic{enumi})
+\end{enumerate}
+
+Newcounter:
+
+\newcounter{mycounter}[subsection]
+
+\setcounter{mycounter}{5}
+Zähler hier: \arabic{mycounter}
+
+\subsection*{Zähler (Teil 2)}
+
+Zähler da: \arabic{mycounter}
+\renewcommand{\themycounter}{\arabic{mycounter}}
+Zähler da: \themycounter
+
+
+\subsection*{Übungsaufgabe}
+
+\NewDocumentCommand{\othermesswert}{ O{1} O{2} }{%
+#1 & #2 \\
+}
+
+\newcounter{messcounter}
+
+\newcommand{\messwert}[2]{%
+\stepcounter{messcounter}%
+\arabic{messcounter} & #1 & #2\\%
+}
+
+\newenvironment{messtabelle}[1]{%
+\setcounter{messcounter}{0}
+\begin{tabular}{ccc}\toprule
+\multicolumn{3}{c}{\bfseries #1} \\
+\# & Zeit [ms] & Spannung [V]\\\midrule
+}{%
+\bottomrule
+\end{tabular}%
+}
+
+\begin{messtabelle}{Wichtige Messwerte}
+%\othermesswert
+\messwert{0.0}{0.000}
+\messwert{0.2}{0.011}
+\messwert{0.4}{0.234}
+\messwert{0.6}{0.723}
+\messwert{0.8}{1.022}
+\messwert{1.0}{1.120}
+\messwert{1.2}{1.143}
+\messwert{1.4}{1.152}
+\messwert{5.0}{1.161}
+\messwert{10.0}{1.159}
+\end{messtabelle}
+
+\begin{messtabelle}{Wichtige Messwerte}
+\messwert{0.0}{0.000}
+\messwert{0.2}{0.011}
+\end{messtabelle}
+
+\subsection*{Minipage}
+
+Text before
+\parbox[t]{4cm}{
+This is a paragraph box.
+It wraps text automatically.
+}
+text after.
+
+
+\begin{minipage}[t]{0.33\textwidth} \blindtext \end{minipage}\hfill% Zeilenumbruch
+\begin{minipage}[c]{0.33\textwidth} \blindtext \end{minipage}\hfill% verhindern,
+\parbox[b]{0.33\textwidth}{\blindtext} % aber den Zwischenraum auffüllen.
+
+\subsection*{Metadaten}
+
+Package Hyperref für Metadateneinbindung.
+
+\verb|\hypersetup{...}| in Präambel.
+}
+
+\section*{Präsis und Zeichnungen}
+{
+\subsection*{Präsis}
+
+
+\subsection*{Zeichnungen}
+}
+
+\section*{Der Weisheit letzter Schluss}
+{
+
+}
+
+\section{Advanced}
+{
+{
+\makeatletter
+% @ allowed only here
+\makeatother
+}
+
+\makeatletter
+\typeout{currentlabel = \@currentlabel} %Console log
+\makeatother
+
+\makeatletter
+\newcommand{\ifsomelabel}{%
+{%
+  \ifx\@currentlabel\@empty
+    No label found
+  \else
+    Label found: \@currentlabel
+  \fi
+}%
+}
+\makeatother
+
+\newcommand{\ifinsection}{%
+  \ifnum\value{section}=0
+    Not in a section%
+  \else
+    In section \thesection%
+  \fi
+}
+
+\ifinsection
+
+\ifsomelabel
+
+}
 
 
 \newpage
