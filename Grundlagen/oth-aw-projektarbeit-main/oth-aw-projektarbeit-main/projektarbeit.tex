@@ -1,0 +1,291 @@
+% LaTeX-Vorlage zur Erstellung einer Projektarbeit (Dokumentation eines Projekts)
+% auf Basis der Vorlage für eine
+% Abschlussarbeit in der Fakultät Elektrotechnik, Medien und Informatik an der OTH Amberg-Weiden
+% Diese Vorlage entstand im Rahmen des Kurses "LaTeX fürs Studium"
+% Aktuelle Version: v0.02
+% Stand: 11.01.2026
+%
+% Changelog:
+%
+% v0.02: 11.01.2026, Überarbeitung und Aktualisierung der Pakete & Optionen sowie der Eingabe persönlicher Angaben
+% v0.01: 03.06.2023, Anpassung der Vorlage für Projektarbeiten (article statt report, keine Titelblätter)
+%
+\documentclass[12pt, oneside]{article}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{parskip}  % Absätze: Abstand statt Einrueckung
+\usepackage[a4paper,			      % Papierformat A4
+            left=2.5cm,				  % Linker Rand
+            right=2.5cm,			  % Rechter Rand
+            top=1.5cm,				  % Oberer Rand
+            bottom=1.5cm,			  % Unter Rand
+            marginparsep=5mm,	  % Abstand der Randnotizen
+            marginparwidth=10mm,% Breite der Randnotizen
+            headheight=7mm,			% Höhe der Kopfzeile
+            headsep=1.2cm,			% Abstand der Kopfzeile
+            footskip=1.5cm,			% Abstand der Fußzeile
+            includeheadfoot]{geometry}
+
+% PDF-Einstellungen
+\usepackage[bookmarks,
+            raiselinks,
+            pageanchor,
+            hyperindex,
+            colorlinks,
+            citecolor=black,
+            linkcolor=black,
+            urlcolor=black,
+            filecolor=black,
+            menucolor=black]{hyperref}
+\usepackage{xspace}
+% Custom commands
+\makeatletter
+\newcommand*{\group}[1]{\def\@group{#1}}\group{}
+\NewDocumentCommand{\insertgroup}{D(){} D[]{}}{%
+  \ifthenelse{\equal{\@group}{}}{}{#1\@group#2}%
+}
+\newcommand*{\insertauthor}{{\def\and{\unskip~\&\xspace}\@author}}
+\newcommand*{\inserttitle}{\@title}
+\newcommand*{\courseofstudy}[1]{\def\insertcourseofstudy{#1}}
+\newcommand*{\keywords}[1]{\def\insertkeywords{#1}}
+\newcommand*{\firstexaminer}[1]{\def\insertfirstexaminer{#1}}
+\newcommand*{\insertgroupandauthors}{%
+  \insertgroup[:~]\insertauthor%
+}
+\AtBeginDocument{
+  \def\and{ \& }
+  \hypersetup{pdftitle={\@title},
+              pdfauthor={\@author},
+              pdfsubject={\@group},
+              pdfkeywords={\insertkeywords},
+  }
+}
+\makeatother
+
+\usepackage{fancyhdr}	                % Eigene Kopf- und Fußzeilen
+\pagestyle{fancy}                     % Seitenstil 'fancy' aktivieren
+\fancyhf{}						                % Vorhandene Einstellungen löschen
+\setlength{\headwidth}{\textwidth}    % Kopf- und Fußzeile so breit wie der Haupttext
+\fancyfoot[R]{\thepage}               % Seitenzahlen in der Fußzeile rechts
+\fancyfoot[L]{\inserttitle}           % Titel in der Fußzeile links
+\fancyhead[L]{\insertgroupandauthors} % Gruppe und Autorennamen in der Kopfzeile links
+\renewcommand{\sectionmark}[1]{       % Definition der Ausgabe des Abschnitts
+  \markboth{Abschnitt \thesection. #1}{}}
+\renewcommand{\headrulewidth}{0.5pt}  % Trennlinie zwischen Kopfzeile und Haupttext
+\renewcommand{\footrulewidth}{0.5pt}  % Trennlinie zwischen Haupttext und Fußzeile
+\fancypagestyle{plain}{				     	  % Anpassung des Seitenstils 'plain' bei Beginn neuer Abschnitte
+  \fancyhf{}								          % Vorbelegung löschen
+  \fancyfoot[C]{\thepage}				      % Seitenzeilen in der Fußzeile mittig
+}
+
+% Mathematischer Formelsatz
+\usepackage[intlimits]{amsmath} % Europäische Integrallimites
+\usepackage{amssymb}
+\usepackage{amsfonts}
+
+% Tabellen
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{booktabs}
+
+% Verschiedenes
+\usepackage[largesc]{newpx}	        % Schriftart Palatino für Haupttext & Mathematikmodus
+\usepackage{graphicx}							  % Einbinden von Graphiken
+\usepackage{tikz}								    % Erstellen von Graphiken + Laden von Standard-Bibliotheken
+\usetikzlibrary{arrows.meta, calc, fit, positioning, shapes.geometric}
+\usepackage[svgnames,cmyk]{xcolor} 	% Verwendung von Farben
+\usepackage[shortlabels, inline]{enumitem}  % Anpassung von Auflistungen/Aufzählungen
+\usepackage[autostyle=true]{csquotes} % \enquote{} für passende Anführungszeichen
+\usepackage[ngerman, capitalize, nameinlink]{cleveref} % Automatisches Referenzieren
+\usepackage{subcaption} % Unterabbildungen/-Tabellen
+\usepackage[defaultlines=2, all]{nowidow} % Hurenkinder und Schusterjungen vermeiden
+\usepackage{placeins} % Mehr Kontrolle über Gleitobjekte
+
+% SI-Einheiten & Zahlendarstellung
+\usepackage[output-decimal-marker={,},  % Komma statt Punkt als Dezimaltrennzeichen
+            group-separator={\,},       % Halbes Leerzeichen als Tausendertrennzeichen
+            uncertainty-mode=separate,  % ± statt ()
+            retain-zero-uncertainty=true,
+           ]{siunitx}  % 123 456 789,01234 ± 123
+
+% Zitationen
+\usepackage[backend=biber,
+            style=ieee,
+            sorting=none,
+            sortcites=true,
+            date=iso,
+            seconds=true]{biblatex}
+\addbibresource{quellen.bib}
+
+
+% Darstellung und Formatierung von Quellcode
+\usepackage{minted}
+\setminted{
+  autogobble,
+  breaklines,
+  linenos,
+  numbers=left,
+}
+% Alternative: Listings
+% \usepackage{listings} % Darstellung von Quellcode
+% \lstloadlanguages{[ISO]C++,Java,XML,[LaTeX]TeX}
+% \lstset{language=C++,
+% 	numbers = none,
+% 	basicstyle = \small\ttfamily,
+% 	keywordstyle = \color{blue},
+% 	commentstyle = \color{battleshipgrey},
+% 	stringstyle = \color{cardinal},
+% 	columns = flexible,
+% 	showstringspaces = false
+% }
+
+
+%
+% Persönliche Angaben
+%
+\author{Erika Musterfrau \and Thomas Mustermann}
+\group{Gruppe M01} % ggf. leer lassen
+\courseofstudy{Medieninformatik}
+\title{Projektarbeit Mobile \& Ubiquitous Computing}
+\keywords{Android, ESP32, MQTT, Lagesensor, MPU6050, WLAN}
+\firstexaminer{Prof.\,Dr. Ulrich Schäfer}
+
+%
+% Beginn des Textteils
+%
+
+\begin{document}
+\thispagestyle{empty}
+\begin{center}
+  \Large
+  Ostbayerische Technische Hochschule Amberg-Weiden\\
+  Fakultät Elektrotechnik, Medien und Informatik\\[.8cm]
+  \large \insertfirstexaminer\\[.8cm]
+  \large Studiengang \insertcourseofstudy\insertgroup(, )\\[.8cm]
+  \Large \inserttitle\\[.8cm]
+  \large \insertauthor\\[.8cm]
+  \today\\[2.5cm]
+\end{center}
+
+\vfill
+\tableofcontents
+
+\clearpage
+
+
+\section{Einleitung}
+
+Hier starten Sie mit Ihrer Beschreibung.
+
+Bitte passen Sie in der \LaTeX-Datei \texttt{projektarbeit.tex} am Anfang folgende
+Zeilen an:
+
+\begin{listing}[h]
+  \inputminted[firstline=143, lastline=151]{latex}{projektarbeit.tex}
+\end{listing}
+
+Diese Literaturquellen sollten durch passende ersetzt werden:
+\autocite{Breymann:2020,Schaefer_Spurk:2010,ct_LaTeX:2005,paho_android:2023}.
+
+Sie können die Dokumentstruktur ändern. Dies ist lediglich ein Vorschlag.
+
+Bei \href{https://www.heise.de/download/blog/Einfuehrung-in-LaTeX-3599742}{Heise (dies ist ein Link)} finden Sie
+eine Zusammenstellung, wie Sie eine \LaTeX-Entwicklungsumgebung installieren, falls Sie nicht
+\href{https://www.overleaf.com}{Overleaf} benutzen wollen.
+
+Alternativ gibt es Hephaistos, ein Devcontainer-fähiges Docker-Image speziell für das (lokale) Kompilieren von \LaTeX-Dokumenten:
+\begin{itemize}[left=4cm]
+  \item[Docker] \url{https://hub.docker.com/r/othawemi/hephaistos}
+  \item[Container-Source] \url{https://git.oth-aw.de/latex-tools/hephaistos}
+  \item[VS-Code-Devcontainer] \url{https://git.oth-aw.de/latex-tools/hephaistos-vscode}
+\end{itemize}
+
+
+
+\section{Projektplanung und Vorgehen}
+
+\dots\ \dots\ \dots
+
+
+\section{Implementierung}
+
+Ihr Code muss hier nicht vollständig wiedergegeben werden, aber evtl. interessante Ausschnitte.
+
+Doku s. \url{https://ctan.org/pkg/minted}
+
+Mit \verb|\inputminted[lastline=14]{C++}{sketch.ino}| können auch (Ausschnitte von) externen Quellcode-Dateien eingebunden werden, sodass \emph{copy \& paste} von Quellcode überflüssig wird.
+
+Es folgt ein C++-Codebeispiel:
+\begin{listing}[ht]
+  \begin{minted}{C++}
+    void setup() {
+      Serial.begin(115200);
+      // gibt etwas aus über die serielle Leitung:
+      Serial.println("Hallo ESP");
+    }
+  \end{minted}
+\end{listing}
+
+\FloatBarrier % Forciert die Ausgabe noch ausstehender Floating-Umgebungen
+
+Java geht auch, hier sieht man gleich die Javadoc-Syntax:
+\begin{listing}[ht]
+  \begin{minted}{Java}
+    /**
+    * Ein Hallo-Welt-Programm in Java.
+    * Dies ist ein Javadoc-Kommentar.
+    *
+    * @author Ulrich Schäfer
+    * @version 1.0
+    */
+    public class HalloWelt {
+    /**
+    * Main-Methode
+    *
+    * @param args Kommandozeilenparameter
+    * @return Rückgabewert
+    */
+      public static int main(String[] args) {
+        System.out.println("Hallo Welt!");
+      }
+    } // Ende der Java-Klasse HalloWelt
+  \end{minted}
+\end{listing}
+
+
+Und zu guter Letzt noch ein XML-Beispiel:
+\begin{listing}[h]
+  \begin{minted}{XML}
+    <spitze>
+      <!-- Kommentar in XML -->
+      <klammer wert="auf"/>
+    </spitze>
+  \end{minted}
+  \caption{Sie sollten die abgedruckten Quellcodes mit treffenden Titeln versehen und bei Bedarf mittels \texttt{\textbackslash{}label} benennen!}
+  \label{src:xml}
+\end{listing}
+
+
+
+\section{Probleme und Diskussion}
+
+Sie können die Überschrift natürlich umbenennen, falls es keine Probleme gibt :-).
+
+
+
+\section{Zusammenfassung und Ausblick}
+
+Die Literatur (für den nächsten Abschnitt) tragen Sie in die Datei \texttt{quellen.bib} ein. Diese Datei hat die BiB\TeX-Syntax (vgl. \url{https://ctan.org/pkg/bibtex}; BiB\TeX\ ist bei \href{https://www.heise.de/download/product/texstudio-62955}{\TeX studio} bzw. \href{https://www.overleaf.com}{Overleaf} dabei; selbstverständlich auch bei Hephaistos).
+
+Zur Literaturverwaltung verwenden Sie am besten \href{https://www.zotero.org}{Zotero} oder \href{https://www.jabref.org}{JabRef}.
+
+\clearpage % - bei Bedarf diesen Seitenumbruch entfernen
+
+\phantomsection
+\addcontentsline{toc}{section}{Literatur}
+\printbibliography
+
+
+%\include{anhang} % zum Beispiel hier die ChatGPT-Chatprotokolle einbinden (oder als extra-Datei)
+
+\end{document}

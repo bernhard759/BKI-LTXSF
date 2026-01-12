@@ -1,0 +1,141 @@
+\documentclass[
+  aspectratio=169,
+  professionalfonts
+]{beamer}
+
+% Theme
+%\usetheme{Madrid}
+%\usecolortheme{default}
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{comment}
+
+% Metadata
+\title[Short Title]{Full Presentation Title}
+\author[Name]{Your Name}
+\institute[Institute]{Your Institute}
+\date{\today}
+
+% Options
+\setbeamertemplate{footline}[frame number]
+\setbeamertemplate{itemize item}{\textbullet}
+\setbeamertemplate{itemize subitem}{--}
+\setbeamertemplate{itemize subsubitem}{$\star$}
+
+
+\begin{document}
+
+\maketitle
+
+% -----------
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% -----------
+
+\begin{frame}{Outline}
+  \tableofcontents
+\end{frame}
+
+% -----------
+
+\section{Introduction}\label{s:intro}
+
+\begin{frame}{Motivation}
+\begin{itemize}
+  \item Why this topic matters \pause
+  \item Key challenge
+  \item Goal of this talk
+  \item<3> Content
+  \item<2-> Stuff
+  \item<-2>Hallo
+\end{itemize}
+Referenz \nameref{s:intro}
+\end{frame}
+
+\begin{frame}{Beispiel}
+\alert<2>{highlighted text}
+\end{frame}
+
+
+\begin{frame}{Beispiel}
+Erste Zeile
+
+\onslide<2->{Zweite Zeile}
+
+Dritte Zeile
+\end{frame}
+
+\begin{frame}{Beispiel}
+Erste Zeile
+
+\only<2>{Zweite Zeile}
+%Only nur zum Ersetzen verwenden
+\only<3>{Dritte Zeile}
+\end{frame}
+
+\begin{comment}
+\begin{frame}{Titel, aberkeinUntertitel!}
+\onslide<3->{Taucht erst später auf!(genauer: ab Slide3)}\\
+Dieser \alert<2>{Text} ist (nur) auf Slide 2 hervorgehoben!\\
+\textcolor<-1>{red}{Rot auf Slide1, Standardfarbe sonst}\\
+\begin{itemize}[<+->] %Default-Overlay-Spezifikation (+: interner counter, -: bis)
+\item Spiegelstriche %äquivalent:\item<+->...
+\item tauchen %äquivalent:\item<+->...
+\item nacheinander auf! %äquivalent:\item<+->...
+\item<2> Verhalten kann aber auch überschrieben werden!
+\end{itemize}
+\newcommand<>{\blau}[1]{\textcolor#2{blue}{#1}}
+\blau<1,3>{Dieser Text ist auf Slides 1 \& 3 blau!}
+\end{frame}
+\end{comment}
+% -----------
+
+\section{Main Content}
+
+\begin{frame}{A Slide with Math}
+\[
+E = mc^2
+\]
+\end{frame}
+
+\begin{frame}{A Slide with Columns}
+\begin{columns}
+  \column{0.5\textwidth}
+    \begin{itemize}
+      \item Point A
+      \item Point B
+    \end{itemize}
+  \column{0.5\textwidth}
+    \includegraphics[width=\linewidth]{example-image}
+\end{columns}
+\end{frame}
+
+% -----------
+
+\section{Conclusion}
+
+\begin{frame}{Conclusion}
+\begin{itemize}
+  \item Summary of results
+  \item Take-home message
+  \item Outlook
+\end{itemize}
+\end{frame}
+
+% -----------
+
+\begin{frame}
+  \centering
+  \Huge Thank you for your attention!
+\end{frame}
+
+\end{document}

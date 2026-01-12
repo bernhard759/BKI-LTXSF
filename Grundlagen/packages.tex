@@ -1,10 +1,11 @@
 \usepackage[ngerman]{babel} %Localisation
 \usepackage[a4paper,margin=3cm]{geometry} %Geometry for better Layout
 \usepackage[T1]{fontenc} %Fontencoding
-\usepackage{microtype} %Better Typography
+\usepackage{microtype} %Better Typography (Sperrsatz)
 \usepackage{textcomp} %Companion fonts
 %\usepackage{lmodern} %Modern font family
 \usepackage{mathpazo} %Palatino (Text) und Pazo (Mathe)
+%\usepackage[largesc]{newpx} %Better Palatino
 \usepackage{ragged2e} %Schönerer Zeilenfall
 \usepackage[autostyle=true]{csquotes} %Quotes
 \usepackage{fontawesome5} %Icons
@@ -40,10 +41,16 @@
 \usepackage{mdframed} %Rahmen
 \usepackage{relsize} %Text skalieren
 \usepackage{fancyhdr} %Kopf- und Fußzeilen
-\usepackage{lastpage} %Letzte Seite referenzieren
+%\usepackage{lastpage} %Letzte Seite referenzieren
 \usepackage{titlesec} %Section Anpassungen
 \usepackage{titletoc} %ToC anpassen
 \usepackage{tikz} %TikZ für Diagramme
+\usetikzlibrary{arrows.meta,positioning,calc}
 \usepackage{pgfplots} %PGFPlots für Diagramme
-\pgfplotsset{compat=1.18} %Kompatibilitätsmodus für
+\pgfplotsset{compat=1.18}
+\usepackage{siunitx} %Einheiten
+%\usepackage{acronym} %Akronyme
+\usepackage{pdflscape} %Landscape
+%\usepackage[defaultlines=2,all]{nowidow} %Keine Satzfehler
 \usepackage{xparse} %Custom Befehle
+\usepackage{menukeys} %Tastatursymbole

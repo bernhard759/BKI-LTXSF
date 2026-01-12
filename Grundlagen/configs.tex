@@ -1,12 +1,14 @@
 {
-\setlist{nosep}
+\setlist[itemize]{nosep}
+\setlist[enumerate]{nosep}
+%\setlist{nosep}
 %\setlist{itemsep=0ex, topsep=0em} %Globale Listeneinstellungen
-\setlist{
-  itemsep=0pt,
-  topsep=0pt,
-  parsep=0pt,
-  partopsep=0pt
-}
+%\setlist{
+  %itemsep=0pt,
+  %topsep=0pt,
+  %parsep=0pt,
+  %partopsep=0pt
+%} %also too global
 }
 
 {
@@ -76,5 +78,12 @@ filecolor=purple
   pdftitle={Titel der Arbeit},
   pdfsubject={Seminararbeit},
   pdfkeywords={LaTeX, Hyperref, PDF},
+}
+}
+
+{
+\sisetup{
+  locale = DE, %Komma statt Punkt
+  per-mode = symbol
 }
 }

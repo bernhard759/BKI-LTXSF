@@ -18,6 +18,8 @@
 %----------------------------
 \begin{document}
 
+%\input{acronyms.tex}
+
 \maketitle
 \tableofcontents
 
@@ -270,7 +272,7 @@ Section \arabic{section}.\arabic{subsection}
 
 Page \arabic{page}\\
 Page \thepage\\
-Last Page \pageref{LastPage}
+%Last Page \pageref{LastPage}
 
 \begin{enumerate}
 \item First
@@ -343,9 +345,9 @@ It wraps text automatically.
 text after.
 
 
-\begin{minipage}[t]{0.33\textwidth} \blindtext \end{minipage}\hfill% Zeilenumbruch
-\begin{minipage}[c]{0.33\textwidth} \blindtext \end{minipage}\hfill% verhindern,
-\parbox[b]{0.33\textwidth}{\blindtext} % aber den Zwischenraum auffüllen.
+\begin{minipage}[t]{0.3\textwidth} \blindtext \end{minipage}\hfill% Zeilenumbruch
+\begin{minipage}[c]{0.3\textwidth} \blindtext \end{minipage}\hfill% verhindern,
+\fbox{\parbox[b]{0.3\textwidth}{\blindtext}} % aber den Zwischenraum auffüllen.
 
 \subsection*{Metadaten}
 
@@ -358,12 +360,162 @@ Package Hyperref für Metadateneinbindung.
 {
 \subsection*{Präsis}
 
+Siehe \verb|beamer.tex|\dots
 
 \subsection*{Zeichnungen}
+
+TikZ ist kein Zeichenprogramm.
+
+\begin{figure}[H]
+\begin{tikzpicture}
+\draw [xkcdGolden, ultra thick] (0, 0) circle (5mm);
+\end{tikzpicture}
+\caption{Ein Ring, sie zu knechten, sie alle zu finden.}
+\end{figure}
+
+\begin{figure}[H]
+\begin{tikzpicture}
+\path [draw=blue, thick] (0, 0)-- ++(0.5, 0)--
+++(0, 1)-- ++(35:1.221)--
+++(-35:1.221)-- ++(0,-1)--
+++(0.5, 0);
+\path [draw=black, fill=yellow!30]
+(1.25, 0.15) rectangle +(0.75, 0.33);
+\draw (0.75, 0)-- ++(0, 0.5)-- ++(0.25, 0) |- cycle
+(0.8, 0.3) circle (0.025);
+\draw [step=0.25, shift={(1, 0.75)}] grid ++(1, 0.5);
+\path [draw=purple, <-] (0, 0) to[out=-30, in=-150] (3, 0);
+\end{tikzpicture}
+\end{figure}
+
+\begin{tikzpicture}
+\draw[->] (0,0) -- (3,0);
+\foreach \n in {1,2,3,4,5} {
+  \draw (\n/2,0) -- ++(0,-0.2) node[below] {\n};
+}
+
+\draw[->] (0,-2) -- (3,-2);
+\foreach \n/\t in {1/1,2/2,2.72/e,3.14/\pi,4/4} {
+  \draw (\n/2,-2) -- ++(0,-0.2) node[below] {$\t$};
+}
+\end{tikzpicture}
+
+
+\begin{tikzpicture}
+\coordinate (a0) at (-0.15,-4);
+\foreach \t [count=\i from 1, remember=\i as \j initially 0]
+  in {I,like,trains,!}
+{
+  \node[draw,circle,right=0.15cm of a\j] (a\i) {\t};
+}
+\end{tikzpicture}
+
+PGFPlots.
+
+\begin{tikzpicture}
+\begin{axis}[
+  width=10cm,
+  height=6cm,
+  % Axis labels
+  xlabel={$x$},
+  ylabel={$f(x)$},
+  % Title
+  title={Example Function Plot},
+  % Axis limits
+  xmin=0, xmax=5,
+  ymin=0, ymax=30,
+  % Grid
+  grid=both,
+  major grid style={line width=.2pt, draw=gray!50},
+  minor grid style={line width=.1pt, draw=gray!20},
+  % Ticks
+  tick align=outside,
+  tick pos=left,
+  xtick distance=1,
+  ytick distance=5,
+  % Legend
+  legend style={
+    at={(0.02,0.98)},
+    anchor=north west,
+    draw=none,
+    fill=white,
+    font=\small
+  },
+  % Lines
+  every axis plot/.style={
+    thick
+  }
+]
+
+% First plot
+\addplot[
+  blue,
+  domain=0:5,
+  samples=100
+]
+{x^2};
+
+\addlegendentry{$x^2$}
+
+% Second plot
+\addplot[
+  red,
+  dashed,
+  domain=0:5,
+  samples=100
+]
+{5*x};
+
+\addlegendentry{$5x$}
+
+\end{axis}
+\end{tikzpicture}
+
 }
 
 \section*{Der Weisheit letzter Schluss}
 {
+
+Mit Steuerung und Klick im PDF geht es zum Editor :-)
+
+Mit \keys{Strg + Alt + J} geht es vom Code zum PDF.
+
+Dies ist eine normale Hochformat-Seite.
+
+\begin{landscape}
+Diese Seite ist im Querformat.
+
+\begin{tabular}{|c|c|c|c|}
+\hline
+A & B & C & D \\
+\hline
+1 & 2 & 3 & 4 \\
+\hline
+\end{tabular}
+\end{landscape}
+
+Wieder Hochformat.
+
+Units:
+
+Eine Länge von \SI{12,5}{\meter}
+Eine Zeit von \SI{3}{\second}
+Eine Geschwindigkeit von \SI{5}{\meter\per\second}
+
+\bigskip
+
+Zahlen sauber ausgerichtet:
+
+\begin{tabular}{S}
+\toprule
+{Messwert} \\
+\midrule
+12.3 \\
+4.56 \\
+123.45 \\
+\bottomrule
+\end{tabular}
+
 
 }
 
